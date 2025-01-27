@@ -30,13 +30,23 @@ import './index.css';
 
 // console.log('👋 This message is being logged by "renderer.js", included via Vite');
 
+import { ipcRenderer } from 'electron'
+
+console.log('renderer.js')
 
 const $ = selector => document.querySelector(selector)
 
 const $count = $('#count')
-const $button = $('#button')
+const $button = document.getElementById('button')
 
 $button.addEventListener('click', () => {
-    const count = parseInt($count.innerText)
-    $count.innerText = count + 1
+    // const count = parseInt($count.innerText)
+    // $count.innerText = count + 1
+    console.log('click')
 })
+
+ipcRenderer.on('theme', (event, theme) => {
+    console.log(event, theme)
+})
+
+
